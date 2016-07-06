@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# run bot 111 10001
+# run bot 222 10002
+
+MODE=$1
+
+# change this if running bot mode
+# bot stuff
+ID=$2
+LOCALPORT=$3
+LOCADDRESS="127.0.0.1:$LOCALPORT"
+
+# change this if running cnc mode
+# cnc stuff
+# CNCLOCAL="127.0.0.1:10000"
+CNCRPC="127.0.0.1:30001"
+R=2
+FS=1000
+
+if [ "$MODE" = "bot" ]
+then
+    echo "BOT: id $ID"
+    echo "LOCAL ADDRESS: $LOCADDRESS"
+    echo "CNCHB: $CNCHB"
+    echo "CNCRPC: $CNCRPC"
+    go run project.go bot -id=$ID -local=$LOCADDRESS -cncrpc=$CNCRPC
+elif [ "$MODE" = "-h" ]
+then
+    echo "Local ip is always 127.0.0.1:; Bot ports are specified."
+    echo "cnc: ./run cnc <rep factor> <filesize>"
+    echo "bot: ./run bot <id> <bot local port>"
+else
+    echo "CNC: "
+    echo "LOCAL ADDRESS: $CNCLOCAL"
+    echo "R: $R; FS: $FS"
+    go run project.go cnc -rpcip=$CNCRPC -r=$R -fs=$FS
+fi

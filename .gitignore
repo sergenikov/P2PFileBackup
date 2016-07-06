@@ -1,0 +1,11 @@
+/project/retrievedfiles/
+/project/storedfiles/
+/project/clientlogfile-Log.txt
+/project/serverLogFile-Log.txt
+/project/project
+/project/bot.sh
+/project/cnc.sh
+*.swp
+serverLogFile-Log.txt
+*.db
+*.log
